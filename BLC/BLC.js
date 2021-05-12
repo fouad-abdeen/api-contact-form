@@ -67,26 +67,6 @@ class BLC {
       return error.message;
     }
   }
-
-  async getFormActions() {
-    try {
-      const oDALC = new DALC();
-      const userTypes = await oDALC.getFormActions();
-      return userTypes;
-    } catch (error) {
-      return error.message;
-    }
-  }
-
-  async getFormMessages() {
-    try {
-      const oDALC = new DALC();
-      const userTypes = await oDALC.getFormMessages();
-      return userTypes;
-    } catch (error) {
-      return error.message;
-    }
-  }
 }
 
 module.exports = BLC;

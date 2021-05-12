@@ -2,13 +2,14 @@ require("./database");
 
 const express = require("express");
 const cors = require("cors");
+const corsOptions = require("./Config/cors");
 
 const routes = require("./WebAPI/Controllers/DataController");
 
 const app = express();
 
 // CORS Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 
 // JSON Parsing Middleware
 app.use(express.json());

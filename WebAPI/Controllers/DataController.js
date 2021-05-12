@@ -2,13 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 
+const recaptcha = require("../Middlewars/ReCaptcha");
+
 // Names of Routes
 const {
   CREATE_CONTACT,
   GET_SOCIAL_ACCOUNTS,
   GET_TITLES,
-  GET_FORM_ACTIONS,
-  GET_FORM_MESSAGES,
 } = require("../Names.Routes");
 
 // Business Logic Component
@@ -57,43 +57,13 @@ const getTitles = async (req, res) => {
     });
   }
 };
-
-const getFormActions = async (req, res) => {
-  try {
-    const oBLC = new BLC();
-    const userTypes = await oBLC.getFormActions();
-    res.send(userTypes);
-  } catch (error) {
-    res.status(500).send({
-      message:
-        error.message ||
-        "Some error occured while retrieving the form actions!",
-    });
-  }
-};
-
-const getFormMessages = async (req, res) => {
-  try {
-    const oBLC = new BLC();
-    const userTypes = await oBLC.getFormMessages();
-    res.send(userTypes);
-  } catch (error) {
-    res.status(500).send({
-      message:
-        error.message ||
-        "Some error occured while retrieving the form messages!",
-    });
-  }
-};
 // #endregion
 
 // #region Routes
 
-router.post(`/${CREATE_CONTACT}`, createContact);
+router.post(`/${CREATE_CONTACT}`, recaptcha, createContact);
 router.get(`/${GET_SOCIAL_ACCOUNTS}`, getSocialAccounts);
 router.get(`/${GET_TITLES}`, getTitles);
-router.get(`/${GET_FORM_ACTIONS}`, getFormActions);
-router.get(`/${GET_FORM_MESSAGES}`, getFormMessages);
 
 // #endregion
 

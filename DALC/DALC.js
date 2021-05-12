@@ -4,8 +4,6 @@
 const ContactModel = require("../Models/Contact");
 const SocialAccountModel = require("../Models/SocialAccount");
 const TitleModel = require("../Models/Title");
-const FormActionModel = require("../Models/FormAction");
-const FormMessageModel = require("../Models/FormMessage");
 
 // Messages
 const MESSAGES = require("../Messages/Messages");
@@ -43,22 +41,6 @@ class DALC {
   getTitles() {
     try {
       return TitleModel.find({});
-    } catch (error) {
-      return error.message;
-    }
-  }
-
-  getFormActions() {
-    try {
-      return FormActionModel.find({});
-    } catch (error) {
-      return error.message;
-    }
-  }
-
-  getFormMessages() {
-    try {
-      return FormMessageModel.find({});
     } catch (error) {
       return error.message;
     }
