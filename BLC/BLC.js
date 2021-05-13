@@ -2,6 +2,8 @@
 
 const validator = require("validator");
 
+const validateUserRequest = require("../Helpers/recaptchaResolver");
+
 // Data Access Layer Component
 const DALC = require("../DALC/DALC");
 
@@ -37,6 +39,11 @@ class BLC {
       throw new Error(FORM.SUBJECT_LENGTH);
     } else if (message.length < 16) {
       throw new Error(FORM.MESSAGE_LENGTH);
+    } else {
+      const token = req.headers["recaptcha-token"];
+      const validRequest = await validateUserRequest(token);
+
+      if (!validRequest) throw new Error("recaptcha failed");
     }
 
     try {

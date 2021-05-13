@@ -2,8 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-const recaptcha = require("../Middlewars/ReCaptcha");
-
 // Names of Routes
 const {
   CREATE_CONTACT,
@@ -61,7 +59,7 @@ const getTitles = async (req, res) => {
 
 // #region Routes
 
-router.post(`/${CREATE_CONTACT}`, recaptcha, createContact);
+router.post(`/${CREATE_CONTACT}`, createContact);
 router.get(`/${GET_SOCIAL_ACCOUNTS}`, getSocialAccounts);
 router.get(`/${GET_TITLES}`, getTitles);
 

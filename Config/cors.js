@@ -1,6 +1,6 @@
 const whitelist = [
   "https://fouad-abdeen.web.app",
-  "https://fouad-abdeen.github.io/contact-form/"
+  "https://fouad-abdeen.github.io",
 ];
 
 const corsOptions = {
